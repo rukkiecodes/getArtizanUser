@@ -17,11 +17,13 @@ import { useGetBookingStore } from "@/store/booking/getBookings";
 import { useuserOverviewStore } from "@/store/overview";
 import { useArtizansStore } from "@/store/artizans";
 import { onMounted, ref } from "vue";
+import { useAppStore } from "@/store/app";
 
 const profile = ref(useProfileStore());
 const booking = useGetBookingStore();
 const count = useuserOverviewStore();
 const artizan = useArtizansStore()
+const app = useAppStore()
 
 onMounted(() => {
   profile.value.getProfile();
@@ -30,5 +32,7 @@ onMounted(() => {
   count.countApprovedStates();
   count.countCompletedStates();
   artizan.getArtizans()
+  app.getLocation()
+  app.getCategories()
 });
 </script>

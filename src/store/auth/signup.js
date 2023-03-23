@@ -12,10 +12,10 @@ const snackbar = useAppStore()
 
 export const useUserSignupStore = defineStore('userSignup', {
   state: () => ({
-    name: 'Terry Amagboro',
-    email: 'rukkiecodes@gmail.com',
-    phone: '+2348071657443',
-    password: 'amagboro',
+    name: '',
+    email: '',
+    phone: '',
+    password: '',
     loading: false
   }),
 

@@ -94,13 +94,13 @@ export const useProfileStore = defineStore('profile', {
             if (!this.user) return
 
             await updateDoc(doc(db, 'users', this.user.uid), {
-                gender: this.gender,
-                stateOfResidence: this.stateOfResidence,
-                LGA: this.LGA,
-                phone: this.phone,
-                guarantorName: this.guarantorName,
-                guarantorPhone: this.guarantorPhone,
-                guarantorAddress: this.guarantorAddress,
+                gender: this.gender != undefined ? this.gender : '',
+                stateOfResidence: this.stateOfResidence != undefined ? this.stateOfResidence : '',
+                LGA: this.LGA != undefined ? this.LGA : '',
+                phone: this.phone != undefined ? this.phone : '',
+                guarantorName: this.guarantorName != undefined ? this.guarantorName : '',
+                guarantorPhone: this.guarantorPhone != undefined ? this.guarantorPhone : '',
+                guarantorAddress: this.guarantorAddress != undefined ? this.guarantorAddress : '',
             })
 
             this.loading = false

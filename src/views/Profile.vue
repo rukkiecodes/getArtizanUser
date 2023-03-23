@@ -15,31 +15,31 @@
           {{ profile.user?.email }}
         </v-card-subtitle>
       </v-card-text>
-      <v-card-text class="text-center">
+      <v-card-text v-if="profile.user?.gender" class="text-center">
         <v-card-subtitle class="px-0 text-caption">Gender</v-card-subtitle>
         {{ profile.user?.gender }}
       </v-card-text>
-      <v-card-text class="text-center">
+      <v-card-text v-if="profile.user?.stateOfResidence" class="text-center">
         <v-card-subtitle class="px-0 text-caption">State Of Residence</v-card-subtitle>
         {{ profile.user?.stateOfResidence }}
       </v-card-text>
-      <v-card-text class="text-center">
+      <v-card-text v-if="profile.user?.LGA" class="text-center">
         <v-card-subtitle class="px-0 text-caption">Local Government Area</v-card-subtitle>
         {{ profile.user?.LGA }}
       </v-card-text>
-      <v-card-text class="text-center">
+      <v-card-text v-if="profile.user?.phone" class="text-center">
         <v-card-subtitle class="px-0 text-caption">Phone</v-card-subtitle>
         {{ profile.user?.phone }}
       </v-card-text>
-      <v-card-text class="text-center">
+      <v-card-text v-if="profile.user?.guarantorName" class="text-center">
         <v-card-subtitle class="px-0 text-caption">Guarantor Name</v-card-subtitle>
         {{ profile.user?.guarantorName }}
       </v-card-text>
-      <v-card-text class="text-center">
+      <v-card-text v-if="profile.user?.guarantorPhone" class="text-center">
         <v-card-subtitle class="px-0 text-caption">Guarantor Phone</v-card-subtitle>
         {{ profile.user?.guarantorPhone }}
       </v-card-text>
-      <v-card-text class="text-center">
+      <v-card-text v-if="profile.user?.guarantorAddress" class="text-center">
         <v-card-subtitle class="px-0 text-caption">Guarantor Address</v-card-subtitle>
         {{ profile.user?.guarantorAddress }}
       </v-card-text>
@@ -66,7 +66,7 @@
       <v-card-text>
         <v-select label="Gender" v-model="profile.gender" :items="['Male', 'Female']" density="compact"
           variant="underlined" color="indigo-accent-4" />
-        <v-text-field v-model="profile.stateOfResidence" label="State of residence" density="compact" variant="underlined"
+        <v-autocomplete v-model="profile.stateOfResidence" :items="app.location" label="State of residence" density="compact" variant="underlined"
           color="indigo-accent-4" />
         <v-text-field v-model="profile.LGA" label="Local government of residence" density="compact" variant="underlined"
           color="indigo-accent-4" />
@@ -94,12 +94,14 @@ import { ref, onMounted, computed } from "vue";
 import { useProfileStore } from "@/store/profile/profile";
 import { useuserOverviewStore } from "@/store/overview";
 import { useDisplay } from "vuetify";
+import { useAppStore } from "@/store/app";
 
 const { name } = useDisplay();
 
 const profile = ref(useProfileStore());
 const overview = ref(useuserOverviewStore());
 const drawer = ref(true);
+const app = useAppStore()
 
 const clickOnInput = () => {
   document.querySelector("#avatarInput").click();
