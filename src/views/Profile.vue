@@ -53,7 +53,7 @@
   </v-container>
 
   <v-navigation-drawer v-model="drawer" location="right" width="350" border="0" color="indigo-lighten-5">
-    <v-card class="ma-4 rounded-lg" :elevation="flat" :color="color">
+    <v-card class="ma-4" :elevation="flat" :color="color" rounded="xl">
       <v-card-title class="text-grey-darken-4 text-body-1">Edit your profile</v-card-title>
       <v-card-text class="text-center my-4">
         <v-avatar @click="clickOnInput" color="indigo" size="80" style="cursor: pointer;">
@@ -83,7 +83,7 @@
           auto-grow color="indigo-accent-4" />
       </v-card-text>
       <v-card-actions>
-        <v-btn @click="profile.updateProfile" :loading="profile.loading" class="bg-indigo" block>Save</v-btn>
+        <v-btn @click="profile.updateProfile" :loading="profile.loading" class="bg-indigo" rounded="xl" block>Save</v-btn>
       </v-card-actions>
     </v-card>
   </v-navigation-drawer>

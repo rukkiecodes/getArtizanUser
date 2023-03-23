@@ -1,5 +1,4 @@
 <template>
-  <v-btn @click="search.searchForArtizan">Click</v-btn>
   <v-sheet height="100%" color="transparent" class="d-flex mb-16"
     :class="bookings.bookings.length <= 0 ? 'd-flex align-center' : ''">
     <v-container :class="bookings.bookings.length <= 0 ? 'd-flex justify-center' : ''">
@@ -123,11 +122,10 @@
   </v-dialog>
 
   <v-btn position="fixed" location="bottom right" class="ma-5 bg-indigo rounded-xl" size="large">
-    <v-icon class="mr-3">mdi-plus</v-icon>
     <span class="text-capitalize">Add Booking</span>
 
-    <v-dialog v-model="bookingsStore.dialog" activator="parent" width="500" persistent scrollable>
-      <v-card>
+    <v-dialog v-model="bookingsStore.dialog" activator="parent" width="400" persistent scrollable>
+      <v-card rounded="xl">
         <v-toolbar color="transparent" density="compact">
           <v-toolbar-title>Add a new booking</v-toolbar-title>
           <v-spacer />
@@ -164,7 +162,7 @@
             color="indigo" rows="1" auto-grow />
         </v-card-text>
         <v-card-actions>
-          <v-btn @click="bookingsStore.addBooking" :loading="bookingsStore.loading" class="bg-indigo" block>Add
+          <v-btn @click="bookingsStore.addBooking" :loading="bookingsStore.loading" class="bg-indigo" block rounded="xl">Add
             booking</v-btn>
         </v-card-actions>
       </v-card>
