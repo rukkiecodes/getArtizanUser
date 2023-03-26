@@ -33,13 +33,6 @@ export default defineConfig({
     ],
   },
   server: {
-    proxy: {
-      "/api": {
-        target: "https://web-production-563e.up.railway.app",
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      }
-    },
+    port: 3000
   },
 })
