@@ -31,18 +31,6 @@
         <v-card-subtitle class="px-0 text-caption">Phone</v-card-subtitle>
         {{ profile.user?.phone }}
       </v-card-text>
-      <v-card-text v-if="profile.user?.guarantorName" class="text-center">
-        <v-card-subtitle class="px-0 text-caption">Guarantor Name</v-card-subtitle>
-        {{ profile.user?.guarantorName }}
-      </v-card-text>
-      <v-card-text v-if="profile.user?.guarantorPhone" class="text-center">
-        <v-card-subtitle class="px-0 text-caption">Guarantor Phone</v-card-subtitle>
-        {{ profile.user?.guarantorPhone }}
-      </v-card-text>
-      <v-card-text v-if="profile.user?.guarantorAddress" class="text-center">
-        <v-card-subtitle class="px-0 text-caption">Guarantor Address</v-card-subtitle>
-        {{ profile.user?.guarantorAddress }}
-      </v-card-text>
 
       <v-card-actions>
         <v-btn block @click="drawer = true" class="ma-4 text-caption rounded-lg bg-indigo mx-auto hidden-lg-and-up">
@@ -72,15 +60,6 @@
           color="indigo-accent-4" />
         <v-text-field v-model="profile.phone" label="Phone" density="compact" variant="underlined"
           color="indigo-accent-4" />
-
-        <v-card-subtitle class="mb-2 mt-5 pl-0">Guarantor Details</v-card-subtitle>
-
-        <v-text-field v-model="profile.guarantorName" label="Name" density="compact" variant="underlined"
-          color="indigo-accent-4" />
-        <v-text-field v-model="profile.guarantorPhone" label="Phone number" density="compact" variant="underlined"
-          color="indigo-accent-4" />
-        <v-textarea v-model="profile.guarantorAddress" label="Address" density="compact" variant="underlined" rows="1"
-          auto-grow color="indigo-accent-4" />
       </v-card-text>
       <v-card-actions>
         <v-btn @click="profile.updateProfile" :loading="profile.loading" class="bg-indigo" rounded="xl" block>Save</v-btn>
@@ -111,9 +90,6 @@ onMounted(() => {
   profile.value.gender = profile.value.user?.gender;
   profile.value.stateOfResidence = profile.value.user?.stateOfResidence;
   profile.value.LGA = profile.value.user?.LGA;
-  profile.value.guarantorName = profile.value.user?.guarantorName;
-  profile.value.guarantorPhone = profile.value.user?.guarantorPhone;
-  profile.value.guarantorAddress = profile.value.user?.guarantorAddress;
   drawerVisibility()
 });
 

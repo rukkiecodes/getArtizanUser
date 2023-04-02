@@ -19,9 +19,6 @@ export const useProfileStore = defineStore('profile', {
         stateOfResidence: '',
         LGA: '',
         phone: '',
-        guarantorName: '',
-        guarantorPhone: '',
-        guarantorAddress: '',
         loading: false
     }),
 
@@ -37,9 +34,6 @@ export const useProfileStore = defineStore('profile', {
                 this.stateOfResidence = doc.get('stateOfResidence')
                 this.LGA = doc.get('LGA')
                 this.phone = doc.get('phone')
-                this.guarantorName = doc.get('guarantorName')
-                this.guarantorPhone = doc.get('guarantorPhone')
-                this.guarantorAddress = doc.get('guarantorAddress')
             })
             return unsub
         },
@@ -98,9 +92,6 @@ export const useProfileStore = defineStore('profile', {
                 stateOfResidence: this.stateOfResidence != undefined ? this.stateOfResidence : '',
                 LGA: this.LGA != undefined ? this.LGA : '',
                 phone: this.phone != undefined ? this.phone : '',
-                guarantorName: this.guarantorName != undefined ? this.guarantorName : '',
-                guarantorPhone: this.guarantorPhone != undefined ? this.guarantorPhone : '',
-                guarantorAddress: this.guarantorAddress != undefined ? this.guarantorAddress : '',
             })
 
             this.loading = false
