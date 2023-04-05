@@ -32,7 +32,6 @@ onMounted(() => {
   count.countApprovedStates();
   count.countCompletedStates();
   artizan.getArtizans()
-  app.getLocation()
   app.getCategories()
 });
 </script>

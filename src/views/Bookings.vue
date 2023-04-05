@@ -4,7 +4,7 @@
     <v-container :class="bookings.bookings.length <= 0 ? 'd-flex justify-center' : ''">
       <v-row v-if="bookings.bookings.length > 0">
         <v-col v-for="booking in bookings.bookings" :key="booking.id" cols="12" sm="4" md="3">
-          <v-card>
+          <v-card rounded="xl">
             <v-card-text class="text-center">
               <v-avatar size="150">
                 <v-img
@@ -32,7 +32,7 @@
             </v-card-text>
             <v-card-actions>
               <v-btn @click="setCurrnetBooking(booking)" class="bg-indigo-lighten-5 text-body-2 text-indigo-accent-4"
-                block>View Description</v-btn>
+                block rounded="xl">View Description</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>

@@ -54,9 +54,10 @@
       <v-card-text>
         <v-select label="Gender" v-model="profile.gender" :items="['Male', 'Female']" density="compact"
           variant="underlined" color="indigo-accent-4" />
-        <v-autocomplete v-model="profile.stateOfResidence" :items="app.location" label="State of residence" density="compact" variant="underlined"
-          color="indigo-accent-4" />
-        <v-text-field v-model="profile.LGA" label="Local government of residence" density="compact" variant="underlined"
+        <v-autocomplete @update:model-value="e => currentState(e)" v-model="profile.stateOfResidence"
+          :items="app.location" item-title="state" item-value="state" label="State of residence" density="compact"
+          variant="underlined" color="indigo-accent-4" />
+        <v-autocomplete v-model="profile.LGA" :items="lga" label="Local government of residence" density="compact" variant="underlined"
           color="indigo-accent-4" />
         <v-text-field v-model="profile.phone" label="Phone" density="compact" variant="underlined"
           color="indigo-accent-4" />
@@ -71,16 +72,16 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useProfileStore } from "@/store/profile/profile";
-import { useuserOverviewStore } from "@/store/overview";
 import { useDisplay } from "vuetify";
 import { useAppStore } from "@/store/app";
 
 const { name } = useDisplay();
 
 const profile = ref(useProfileStore());
-const overview = ref(useuserOverviewStore());
 const drawer = ref(true);
 const app = useAppStore()
+
+let lga = ref([])
 
 const clickOnInput = () => {
   document.querySelector("#avatarInput").click();
@@ -97,6 +98,12 @@ const setAvatar = (e) => {
   profile.value.file = e;
   profile.value.updateAvatar();
 };
+
+const currentState = e => {
+  let currnetLga = app.location.filter(obj => obj.state === e)
+  let object = { ...currnetLga }
+  lga = object[0].lgas
+}
 
 const flat = computed(() => {
   // name is reactive and
