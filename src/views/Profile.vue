@@ -106,8 +106,6 @@ const currentState = e => {
 }
 
 const flat = computed(() => {
-  // name is reactive and
-  // must use .value
   switch (name.value) {
     case "xs":
       return 0;

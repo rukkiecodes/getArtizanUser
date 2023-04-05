@@ -19,7 +19,10 @@ export const useAddBookingStore = defineStore('addBooking', {
         description: 'A short description',
         date: '',
         time: '',
-        location: 'Location',
+        location: {
+            state: null,
+            lga: null
+        },
         budget: 12000,
         category: 'Actor',
         jobAddress: 'jobAddress',
@@ -29,7 +32,7 @@ export const useAddBookingStore = defineStore('addBooking', {
     actions: {
         async addBooking() {
             if (!this.photo) {
-                if (this.title == '' || this.description == '' || this.date == '' || this.time == '' || this.location == '' || this.budget == '' || this.category == '' || this.jobAddress == '') {
+                if (this.title == '' || this.description == '' || this.date == '' || this.time == '' || this.budget == '' || this.category == '' || this.jobAddress == '') {
                     snackbar.snackbar = true
                     snackbar.snackbarText = 'All fields are required'
                     snackbar.snackbarColor = 'error'
@@ -61,7 +64,7 @@ export const useAddBookingStore = defineStore('addBooking', {
             } else {
                 if (!this.photo) return
 
-                if (this.title == '' || this.description == '' || this.date == '' || this.time == '' || this.location == '' || this.budget == '' || this.category == '' || this.jobAddress == '') {
+                if (this.title == '' || this.description == '' || this.date == '' || this.time == '' || this.budget == '' || this.category == '' || this.jobAddress == '') {
                     snackbar.snackbar = true
                     snackbar.snackbarText = 'All fields are required'
                     snackbar.snackbarColor = 'error'

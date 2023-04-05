@@ -147,9 +147,14 @@
           <v-text-field v-model="bookingsStore.time" label="Time" density="comfortable" variant="underlined"
             color="indigo" type="time" />
 
-          <v-select v-model="bookingsStore.location" :items="app.location" label="Location" density="comfortable"
+          <v-autocomplete @update:model-value="e => currentState(e)" v-model="bookingsStore.location.state"
+            :items="app.location" item-title="state" item-value="state" label="State" density="comfortable"
             variant="underlined" color="indigo" />
-          <v-select v-model="search.specialisation" :items="app.categories" label="Category" density="comfortable"
+
+          <v-autocomplete v-model="bookingsStore.location.lga" :items="lga" label="LGA" density="comfortable"
+            variant="underlined" color="indigo" />
+
+          <v-autocomplete v-model="search.specialisation" :items="app.categories" label="Category" density="comfortable"
             variant="underlined" color="indigo" />
 
           <v-text-field v-model="bookingsStore.budget" label="Budget" density="comfortable" variant="underlined"
@@ -162,7 +167,8 @@
             color="indigo" rows="1" auto-grow />
         </v-card-text>
         <v-card-actions>
-          <v-btn @click="bookingsStore.addBooking" :loading="bookingsStore.loading" class="bg-indigo" block rounded="xl">Add
+          <v-btn @click="bookingsStore.addBooking" :loading="bookingsStore.loading" class="bg-indigo" block
+            rounded="xl">Add
             booking</v-btn>
         </v-card-actions>
       </v-card>
@@ -181,6 +187,7 @@ const bookings = ref(useGetBookingStore());
 const bookingsStore = ref(useAddBookingStore());
 const app = ref(useAppStore());
 const search = ref(useArtizansStore());
+let lga = ref([])
 
 const currentBooking = ref({
   dialog: false,
@@ -191,11 +198,15 @@ const setCurrnetBooking = (prop) => {
     dialog: true,
     ...prop
   }
-  // currentBooking.value.dialog = true;
-  // currentBooking.value.body = prop.description;
 }
 
 const setPicture = (e) => {
   bookingsStore.value.photo = e;
 };
+
+const currentState = e => {
+  let currnetLga = app.value.location.filter(obj => obj.state === e)
+  let object = { ...currnetLga }
+  lga = object[0].lgas
+}
 </script>
