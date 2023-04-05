@@ -50,7 +50,7 @@
 
   <!-- for active booking description -->
   <v-dialog v-model="currentBooking.dialog" width="400">
-    <v-card>
+    <v-card rounded="xl">
       <v-toolbar density="compact" color="transparent">
         <v-spacer />
         <v-btn @click="currentBooking.dialog = false" icon size="small">
@@ -92,8 +92,8 @@
           </v-list-item>
           <v-list-item density="compact">
             <v-list-item-subtitle class="text-caption">Location</v-list-item-subtitle>
-            <v-list-item-title class="text-grey-darken-4 text-body-2 font-weight-bold">{{ currentBooking?.location
-            }}</v-list-item-title>
+            <v-list-item-title class="text-grey-darken-4 text-body-2 font-weight-bold">{{ currentBooking?.location.lga
+            }}, {{ currentBooking?.location.state }}</v-list-item-title>
           </v-list-item>
           <v-list-item density="compact">
             <v-list-item-subtitle class="text-caption">Date</v-list-item-subtitle>

@@ -67,7 +67,8 @@
               <td class="text-grey-darken-2 text-caption font-weight-bold">{{
                 (booking?.budget).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}</td>
               <td class="text-grey-darken-2 text-caption font-weight-bold">{{ booking?.category }}</td>
-              <td class="text-grey-darken-2 text-caption font-weight-bold">{{ booking?.location }}</td>
+              <td class="text-grey-darken-2 text-caption font-weight-bold">{{ booking?.location.lga }}, {{
+                booking?.location.state }}</td>
               <td class="text-grey-darken-2 text-caption font-weight-bold">{{ booking?.date }}</td>
               <td class="text-grey-darken-2 text-caption font-weight-bold">{{ booking?.time }}</td>
               <td class="text-grey-darken-2 text-caption font-weight-bold">{{ booking?.createdAt?.toDate().toDateString()
@@ -80,15 +81,15 @@
     </v-table>
   </v-container>
 
-  <v-dialog v-model="activeDialog.dialog" width="350" scrollable>
-    <v-card>
+  <v-dialog v-model="activeDialog.dialog" width="400" scrollable>
+    <v-card rounded="xl">
       <v-toolbar density="compact" color="transparent">
         <v-spacer />
         <v-btn @click="activeDialog.dialog = false" icon size="small">
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-toolbar>
-      <v-card-text style="max-height: 600px;" class="pa-0 ma-0">
+      <v-card-text style="max-height: 650px;" class="pa-0 ma-0">
         <v-card-text class="text-center">
           <v-avatar size="150">
             <v-img
@@ -122,8 +123,8 @@
           </v-list-item>
           <v-list-item density="compact">
             <v-list-item-subtitle class="text-caption">Location</v-list-item-subtitle>
-            <v-list-item-title class="text-grey-darken-4 text-body-2 font-weight-bold">{{ activeDialog?.location
-            }}</v-list-item-title>
+            <v-list-item-title class="text-grey-darken-4 text-body-2 font-weight-bold">{{ activeDialog?.location.lga
+            }}, {{ activeDialog?.location.state }}</v-list-item-title>
           </v-list-item>
           <v-list-item density="compact">
             <v-list-item-subtitle class="text-caption">Date</v-list-item-subtitle>
